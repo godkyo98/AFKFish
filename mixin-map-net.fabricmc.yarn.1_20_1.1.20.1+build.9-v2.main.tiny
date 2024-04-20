@@ -1,0 +1,3 @@
+v1	named	intermediary
+FIELD	Kyo/autofish/mixin/MixinClientPlayNetworkHandler	Lnet/minecraft/client/MinecraftClient;	client	field_3690
+FIELD	Kyo/autofish/mixin/MixinFishHookEntity	I	hookCountdown	field_7173
