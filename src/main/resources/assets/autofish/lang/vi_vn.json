@@ -1,0 +1,58 @@
+{
+    "key.autofish.open_gui": "Mở Autofish GUI",
+    "options.autofish.title": "Autofish cài đặt",
+  
+    "options.autofish.toggle.on": "\u00A7abật",
+    "options.autofish.toggle.off": "\u00A7etắt",
+  
+    "options.autofish.enable.title": "Bật tính năng Autofish",
+    "options.autofish.enable.tooltip": "Bật hoặc tắt toàn bộ mod.",
+  
+    "options.autofish.multirod.title": "Bật MultiRod",
+    "options.autofish.multirod.tooltip_0": "Quay vòng qua tất cả",
+    "options.autofish.multirod.tooltip_1": "Các thanh có sẵn trong hotbar,",
+    "options.autofish.multirod.tooltip_2": "Chuyển sang cái bên tiếp khi chúng bị hỏng.",
+  
+    "options.autofish.break_protection.title": "Bật tính năng bảo vệ ngắt ",
+    "options.autofish.break_protection.tooltip_0": "Ngừng sử dụng cần câu có mức thấp",
+    "options.autofish.break_protection.tooltip_1": "Độ bền trước khi chúng bị hỏng",
+  
+    "options.autofish.persistent.title": "Bật chế độ liên tục",
+    "options.autofish.persistent.tooltip_0": "Bật tính năng luôn giữ lưỡi câu",
+    "options.autofish.persistent.tooltip_1": "Ném bất cứ khi nào có cần câu trong tay",
+    "options.autofish.persistent.tooltip_2": "Kiểm tra 10 giây một lần và làm lại",
+    "options.autofish.persistent.tooltip_3": "Nếu cần",
+    "options.autofish.persistent.tooltip_4": "Điều này hữu ích cho các vấn đề về đỗ trễ hoặc khi",
+    "options.autofish.persistent.tooltip_5": "Câu cá trong thời gian dài",
+    
+    "options.autofish.sound.title": "Sử dụng tính năng phát hiện âm thanh",
+    "options.autofish.sound.tooltip_0": "\u00A76Mới hơn, dựa trên khả năng phát hiện chính xác hơn",
+    "options.autofish.sound.tooltip_1": "\u00A76Trên âm thanh bobber chứ không phải âm thanh",
+    "options.autofish.sound.tooltip_2": "\u00A76Phát hiện chuyển động của lưỡi câu tiêu chuẩn",
+    "options.autofish.sound.tooltip_3": "- Bạn chắc hẳn đã ở gần",
+    "options.autofish.sound.tooltip_4": "  Bắt để cái này hoạt động",
+    "options.autofish.sound.tooltip_5": "- Nếu lưỡi câu của người chơi khác ở gần",
+    "options.autofish.sound.tooltip_6": "  Của bạn, nó có thể kích hoạt sai mẻ đánh bắt!",
+    "options.autofish.sound.tooltip_7": "\u00A7cTùy chọn này chỉ ảnh hưởng",
+    "options.autofish.sound.tooltip_8": "\u00A7cMultiplayer. Singleplayer Sử dụng cái riêng của nó",
+    "options.autofish.sound.tooltip_9": "\u00A7cPhát hiện.",
+  
+    "options.autofish.multiplayer_compat.title": "Buộc phát hiện nhiều người chơi (Khả năng tương thích với Mod)",
+    "options.autofish.multiplayer_compat.tooltip_0": "Bắt buộc sử dụng nhiều người chơi",
+    "options.autofish.multiplayer_compat.tooltip_1": "Phát hiện khi đang ở chế độ chơi đơn",
+    "options.autofish.multiplayer_compat.tooltip_2": "Điều này mang lại khả năng tương thích với các mod của bên thứ ba",
+  
+    "options.autofish.recast_delay.title": "Độ trễ phát lại (ms)",
+    "options.autofish.recast_delay.value": "%d ms",
+    "options.autofish.recast_delay.tooltip_0": "Điều chỉnh độ trễ giữa việc đánh bắt",
+    "options.autofish.recast_delay.tooltip_1": "Một con cá và đúc lại cần câu",
+  
+    "options.autofish.clear_regex.title": "Mẫu trò chuyện xóa Lag",
+    "options.autofish.clear_regex.tooltip_0": "Đúc lại cần câu khi cần",
+    "options.autofish.clear_regex.tooltip_1": "Mẫu này khớp với trò chuyện",
+    "options.autofish.clear_regex.tooltip_2": "\u00A76Mẫu này là \u00A7aBIểu thích chính quy\u00A76.",
+  
+    "options.autofish.basic.title": "Cài đặt cơ bản",
+    "options.autofish.advanced.title": "Cài đặt nâng cao"
+  }
+  
