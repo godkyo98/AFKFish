@@ -1,8 +1,3 @@
-[09:08:22] [ERROR] [FabricLoader/GameProvider]: Minecraft game provider couldn't locate the game! The game may be absent from the class path, lacks some expected files, suffers from jar corruption or is of an unsupported variety/version.
-[09:08:22] [ERROR] [FabricLoader/]: Uncaught exception in thread "main"
-java.lang.RuntimeException: Minecraft game provider couldn't locate the game! The game may be absent from the class path, lacks some expected files, suffers from jar corruption or is of an unsupported variety/version.
-	at net.fabricmc.loader.impl.launch.knot.Knot.createGameProvider(Knot.java:212)
-	at net.fabricmc.loader.impl.launch.knot.Knot.init(Knot.java:130)
-	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:68)
-	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
-	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86)
+[22:16:02] [INFO] [FabricLoader/GameProvider]: Loading Minecraft 1.20.4 with Fabric Loader 0.15.9
+[22:16:02] [WARN] [FabricLoader/GameRemap]: Incomplete remapped file found! This means that the remapping process failed on the previous launch. If this persists, make sure to let us at Fabric know!
+[22:16:02] [INFO] [FabricLoader/GameRemap]: Fabric is preparing JARs on first launch, this may take a few seconds...
