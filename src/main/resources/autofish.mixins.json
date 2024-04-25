@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.1",
   "package": "Kyo.autofish.mixin",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_21",
   "mixins": [],
   "client": [
     "MixinFishHookEntity",
