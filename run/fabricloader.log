@@ -1,3 +1,0 @@
-[22:16:02] [INFO] [FabricLoader/GameProvider]: Loading Minecraft 1.20.4 with Fabric Loader 0.15.9
-[22:16:02] [WARN] [FabricLoader/GameRemap]: Incomplete remapped file found! This means that the remapping process failed on the previous launch. If this persists, make sure to let us at Fabric know!
-[22:16:02] [INFO] [FabricLoader/GameRemap]: Fabric is preparing JARs on first launch, this may take a few seconds...
