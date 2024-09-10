@@ -56,7 +56,7 @@ public class FishMonitorMPMotion implements FishMonitorMP {
       if (
         minecraft.player != null &&
         minecraft.player.fishHook != null &&
-        minecraft.player.fishHook.getId() == velocityPacket.getId()
+        minecraft.player.fishHook.getId() == velocityPacket.getEntityId()
       ) {
         // Wait until the bobber has rose in the water.
         // Prevent remarking the bobber rise timestamp until it is reset by catching.
