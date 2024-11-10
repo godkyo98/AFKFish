@@ -32,7 +32,7 @@ public class FishMonitorMPSound implements FishMonitorMP {
             if (packet instanceof PlaySoundS2CPacket) {
                 PlaySoundS2CPacket soundPacket = (PlaySoundS2CPacket) packet;
                 SoundEvent soundEvent = soundPacket.getSound().value();
-                soundName = soundEvent.getId().toString();
+                soundName = soundEvent.id().toString();
                 x = soundPacket.getX();
                 y = soundPacket.getY();
                 z = soundPacket.getZ();

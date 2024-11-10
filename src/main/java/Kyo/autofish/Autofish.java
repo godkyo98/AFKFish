@@ -196,7 +196,7 @@ public class Autofish {
             Hand hand = getCorrectHand();
             ActionResult actionResult = Objects.requireNonNull(client.interactionManager).interactItem(client.player, hand);
             if (actionResult.isAccepted()) {
-                if (actionResult.shouldSwingHand()) {
+                if (actionResult.isAccepted()) {
                     client.player.swingHand(hand);
                 }
                 client.gameRenderer.firstPersonRenderer.resetEquipProgress(hand);
