@@ -8,6 +8,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import Kyo.autofish.Autofish;
 
@@ -33,7 +34,7 @@ public class FishMonitorMPMotion implements FishMonitorMP {
     FishingBobberEntity hook
   ) {
     if (
-      worldContainsBlockWithMaterial(hook.getWorld(), hook.getBoundingBox())
+      worldContainsBlockWithMaterial(hook.getEntityWorld(), hook.getBoundingBox())
     ) {
       hasHitWater = true;
     }
@@ -51,42 +52,43 @@ public class FishMonitorMPMotion implements FishMonitorMP {
     Packet<?> packet,
     MinecraftClient minecraft
   ) {
-    if (packet instanceof EntityVelocityUpdateS2CPacket) {
-      EntityVelocityUpdateS2CPacket velocityPacket = (EntityVelocityUpdateS2CPacket) packet;
-      if (
+    if (packet instanceof EntityVelocityUpdateS2CPacket velocityPacket) {
+        if (
         minecraft.player != null &&
         minecraft.player.fishHook != null &&
         minecraft.player.fishHook.getId() == velocityPacket.getEntityId()
       ) {
-        // Wait until the bobber has rose in the water.
-        // Prevent remarking the bobber rise timestamp until it is reset by catching.
+            // TỐI ƯU: Lấy đối tượng velocity một lần và dùng lại
+            Vec3d velocity = velocityPacket.getVelocity();
+          // Chờ cho đến khi phao nổi lên trong nước.
+          // Ngăn việc đánh dấu lại thời gian phao nổi cho đến khi nó được reset bằng cách câu cá.
         if (
           hasHitWater &&
           bobberRiseTimestamp == 0 &&
-          velocityPacket.getVelocityY() > 0
+          velocity.getY() > 0
         ) {
-          // Mark the time in which the bobber began to rise.
+          // Đánh dấu thời gian phao bắt đầu nổi lên.
           bobberRiseTimestamp = autofish.timeMillis;
         }
 
-        // Calculate the time in which the bobber has been in the water
+        // Tính thời gian phao đã ở trong nước
         long timeInWater = autofish.timeMillis - bobberRiseTimestamp;
 
-        // If the bobber has been in the water long enough, start detecting the bobber movement.
+        // Nếu phao đã ở trong nước đủ lâu, bắt đầu phát hiện chuyển động của phao.
         if (
           hasHitWater &&
           bobberRiseTimestamp != 0 &&
           timeInWater > START_CATCHING_AFTER_THRESHOLD
         ) {
           if (
-            velocityPacket.getVelocityX() == 0 &&
-            velocityPacket.getVelocityZ() == 0 &&
-            velocityPacket.getVelocityY() < PACKET_MOTION_Y_THRESHOLD
+            velocity.getX() == 0 &&
+            velocity.getZ() == 0 &&
+            velocity.getY() < PACKET_MOTION_Y_THRESHOLD
           ) {
-            // Catch the fish
+            // Câu cá
             autofish.catchFish();
 
-            // Reset the class attributes to default.
+            // Reset các thuộc tính của lớp về mặc định.
             this.handleHookRemoved();
           }
         }

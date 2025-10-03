@@ -31,7 +31,7 @@ public class FabricModAutofish implements ClientModInitializer {
         //Create ConfigManager
         this.configManager = new ConfigManager(this);
         //Register Keybinding
-        autofishGuiKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.autofish.open_gui", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_V, "Autofish"));
+        autofishGuiKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.autofish.open_gui", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_V, KeyBinding.Category.MISC));
         //Register Tick Callback
         ClientTickEvents.END_CLIENT_TICK.register(this::tick);
         //Create Scheduler instance
