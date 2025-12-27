@@ -1,19 +1,19 @@
 package Kyo.autofish.monitor;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.projectile.FishingBobberEntity;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.PlaySoundFromEntityS2CPacket;
-import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket;
-import net.minecraft.sound.SoundEvent;
 import Kyo.autofish.Autofish;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientboundSoundEntityPacket;
+import net.minecraft.network.protocol.game.ClientboundSoundPacket;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.projectile.FishingHook;
 
 public class FishMonitorMPSound implements FishMonitorMP {
 
     public static final double HOOKSOUND_DISTANCESQ_THRESHOLD = 25D;
 
     @Override
-    public void hookTick(Autofish autofish, MinecraftClient minecraft, FishingBobberEntity hook) {
+    public void hookTick(Autofish autofish, Minecraft minecraft, FishingHook hook) {
     }
 
     @Override
@@ -21,18 +21,18 @@ public class FishMonitorMPSound implements FishMonitorMP {
     }
 
     @Override
-    public void handlePacket(Autofish autofish, Packet<?> packet, MinecraftClient minecraft) {
+    public void handlePacket(Autofish autofish, Packet<?> packet, Minecraft minecraft) {
 
-        if (packet instanceof PlaySoundS2CPacket || packet instanceof PlaySoundFromEntityS2CPacket) {
+        if (packet instanceof ClientboundSoundPacket || packet instanceof ClientboundSoundEntityPacket) {
             //TODO investigate PlaySoundFromEntityS2CPacket; i dont think its ever used for fishing but whatever
 
             String soundName;
             double x, y, z;
 
-            if (packet instanceof PlaySoundS2CPacket) {
-                PlaySoundS2CPacket soundPacket = (PlaySoundS2CPacket) packet;
+            if (packet instanceof ClientboundSoundPacket) {
+                ClientboundSoundPacket soundPacket = (ClientboundSoundPacket) packet;
                 SoundEvent soundEvent = soundPacket.getSound().value();
-                soundName = soundEvent.id().toString();
+                soundName = soundEvent.location().toString();
                 x = soundPacket.getX();
                 y = soundPacket.getY();
                 z = soundPacket.getZ();
@@ -42,9 +42,9 @@ public class FishMonitorMPSound implements FishMonitorMP {
 
             if (soundName.equalsIgnoreCase("minecraft:entity.fishing_bobber.splash") || soundName.equalsIgnoreCase("entity.fishing_bobber.splash")) {
                 if(minecraft.player != null) {
-                    FishingBobberEntity hook = minecraft.player.fishHook;
+                    FishingHook hook = minecraft.player.fishing;
                     if (hook != null) {
-                        if (hook.squaredDistanceTo(x, y, z) < HOOKSOUND_DISTANCESQ_THRESHOLD) {
+                        if (hook.distanceToSqr(x, y, z) < HOOKSOUND_DISTANCESQ_THRESHOLD) {
                             autofish.catchFish();
                         }
                     }

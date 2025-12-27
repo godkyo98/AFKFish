@@ -1,37 +1,37 @@
 package Kyo.autofish.mixin;
 
 import Kyo.autofish.FabricModAutofish;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientCommonNetworkHandler;
-import net.minecraft.client.network.ClientConnectionState;
-import net.minecraft.client.network.ClientPlayNetworkHandler;
-import net.minecraft.network.ClientConnection;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.listener.TickablePacketListener;
-import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket;
-import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
-import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientCommonPacketListenerImpl;
+import net.minecraft.client.multiplayer.ClientPacketListener;
+import net.minecraft.client.multiplayer.CommonListenerCookie;
+import net.minecraft.network.Connection;
+import net.minecraft.network.TickablePacketListener;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
+import net.minecraft.network.protocol.game.ClientboundSoundPacket;
+import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(ClientPlayNetworkHandler.class)
-public abstract class MixinClientPlayNetworkHandler extends ClientCommonNetworkHandler implements TickablePacketListener, ClientPlayPacketListener {
-    protected MixinClientPlayNetworkHandler(MinecraftClient client, ClientConnection connection, ClientConnectionState connectionState) {
+@Mixin(ClientPacketListener.class)
+public abstract class MixinClientPlayNetworkHandler extends ClientCommonPacketListenerImpl implements TickablePacketListener, ClientGamePacketListener {
+    protected MixinClientPlayNetworkHandler(Minecraft client, Connection connection, CommonListenerCookie connectionState) {
         super(client, connection, connectionState);
     }
     @Inject(method = "onPlaySound", at = @At("HEAD"))
-    public void onPlaySound(PlaySoundS2CPacket playSoundS2CPacket_1, CallbackInfo ci) {
-        if (client.isOnThread()) FabricModAutofish.getInstance().handlePacket(playSoundS2CPacket_1);
+    public void onPlaySound(ClientboundSoundPacket playSoundS2CPacket_1, CallbackInfo ci) {
+        if (minecraft.isSameThread()) FabricModAutofish.getInstance().handlePacket(playSoundS2CPacket_1);
     }
     @Inject(method = "onEntityVelocityUpdate", at = @At("HEAD"))
-    public void onVelocityUpdate(EntityVelocityUpdateS2CPacket entityVelocityUpdateS2CPacket_1, CallbackInfo ci) {
-        if (client.isOnThread()) FabricModAutofish.getInstance().handlePacket(entityVelocityUpdateS2CPacket_1);
+    public void onVelocityUpdate(ClientboundSetEntityMotionPacket entityVelocityUpdateS2CPacket_1, CallbackInfo ci) {
+        if (minecraft.isSameThread()) FabricModAutofish.getInstance().handlePacket(entityVelocityUpdateS2CPacket_1);
     }
     @Inject(method = "onGameMessage", at = @At("HEAD"))
-    public void onChatMessage(GameMessageS2CPacket chatMessageS2CPacket_1, CallbackInfo ci) {
-        if (client.isOnThread()) FabricModAutofish.getInstance().handleChat(chatMessageS2CPacket_1);
+    public void onChatMessage(ClientboundSystemChatPacket chatMessageS2CPacket_1, CallbackInfo ci) {
+        if (minecraft.isSameThread()) FabricModAutofish.getInstance().handleChat(chatMessageS2CPacket_1);
     }
 }
 

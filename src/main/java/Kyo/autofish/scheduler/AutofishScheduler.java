@@ -1,10 +1,10 @@
 package Kyo.autofish.scheduler;
 
-import net.minecraft.client.MinecraftClient;
 import Kyo.autofish.FabricModAutofish;
 
 import java.util.ArrayList;
 import java.util.List;
+import net.minecraft.client.Minecraft;
 
 public class AutofishScheduler {
 
@@ -21,13 +21,13 @@ public class AutofishScheduler {
         this.modAutofish = modAutofish;
     }
 
-    public void tick(MinecraftClient client) {
+    public void tick(Minecraft client) {
 
         //World change detection
         //This resets the timer on each repeating action on world change
         //Needed because Util.milliTime() can return a different value when the game is first initializing
-        if ((client.world == null) == doesWorldExist) {
-            doesWorldExist = (client.world != null);
+        if ((client.level == null) == doesWorldExist) {
+            doesWorldExist = (client.level != null);
             repeatingActions.forEach(Action::resetTimer);
         }
 
@@ -35,7 +35,7 @@ public class AutofishScheduler {
         if (!modAutofish.getConfig().isAutofishEnabled()) queuedActions.clear();
         //Clear out the action queue whenever world or player goes null
         //Also returns method to prevent NullPointers on any scheduled actions
-        if (client.world == null || client.player == null) {
+        if (client.level == null || client.player == null) {
             queuedActions.clear();
             return;
         }

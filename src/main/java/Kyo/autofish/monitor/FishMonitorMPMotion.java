@@ -1,16 +1,16 @@
 package Kyo.autofish.monitor;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.projectile.FishingBobberEntity;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
 import Kyo.autofish.Autofish;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.projectile.FishingHook;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 
 public class FishMonitorMPMotion implements FishMonitorMP {
 
@@ -30,11 +30,11 @@ public class FishMonitorMPMotion implements FishMonitorMP {
   @Override
   public void hookTick(
     Autofish autofish,
-    MinecraftClient minecraft,
-    FishingBobberEntity hook
+    Minecraft minecraft,
+    FishingHook hook
   ) {
     if (
-      worldContainsBlockWithMaterial(hook.getEntityWorld(), hook.getBoundingBox())
+      worldContainsBlockWithMaterial(hook.level(), hook.getBoundingBox())
     ) {
       hasHitWater = true;
     }
@@ -50,22 +50,22 @@ public class FishMonitorMPMotion implements FishMonitorMP {
   public void handlePacket(
     Autofish autofish,
     Packet<?> packet,
-    MinecraftClient minecraft
+    Minecraft minecraft
   ) {
-    if (packet instanceof EntityVelocityUpdateS2CPacket velocityPacket) {
+    if (packet instanceof ClientboundSetEntityMotionPacket velocityPacket) {
         if (
         minecraft.player != null &&
-        minecraft.player.fishHook != null &&
-        minecraft.player.fishHook.getId() == velocityPacket.getEntityId()
+        minecraft.player.fishing != null &&
+        minecraft.player.fishing.getId() == velocityPacket.getId()
       ) {
             // TỐI ƯU: Lấy đối tượng velocity một lần và dùng lại
-            Vec3d velocity = velocityPacket.getVelocity();
+            Vec3 velocity = velocityPacket.getMovement();
           // Chờ cho đến khi phao nổi lên trong nước.
           // Ngăn việc đánh dấu lại thời gian phao nổi cho đến khi nó được reset bằng cách câu cá.
         if (
           hasHitWater &&
           bobberRiseTimestamp == 0 &&
-          velocity.getY() > 0
+          velocity.y() > 0
         ) {
           // Đánh dấu thời gian phao bắt đầu nổi lên.
           bobberRiseTimestamp = autofish.timeMillis;
@@ -81,9 +81,9 @@ public class FishMonitorMPMotion implements FishMonitorMP {
           timeInWater > START_CATCHING_AFTER_THRESHOLD
         ) {
           if (
-            velocity.getX() == 0 &&
-            velocity.getZ() == 0 &&
-            velocity.getY() < PACKET_MOTION_Y_THRESHOLD
+            velocity.x() == 0 &&
+            velocity.z() == 0 &&
+            velocity.y() < PACKET_MOTION_Y_THRESHOLD
           ) {
             // Câu cá
             autofish.catchFish();
@@ -97,22 +97,22 @@ public class FishMonitorMPMotion implements FishMonitorMP {
   }
 
   public static boolean worldContainsBlockWithMaterial(
-    World world,
-    Box box
+    Level world,
+    AABB box
     /*, Material material*/
   ) {
-    int i = MathHelper.floor(box.minX);
-    int j = MathHelper.ceil(box.maxX);
-    int k = MathHelper.floor(box.minY);
-    int l = MathHelper.ceil(box.maxY);
-    int m = MathHelper.floor(box.minZ);
-    int n = MathHelper.ceil(box.maxZ);
+    int i = Mth.floor(box.minX);
+    int j = Mth.ceil(box.maxX);
+    int k = Mth.floor(box.minY);
+    int l = Mth.ceil(box.maxY);
+    int m = Mth.floor(box.minZ);
+    int n = Mth.ceil(box.maxZ);
     // MaterialPredicate materialPredicate = MaterialPredicate.create(material);
     return BlockPos
-      .stream(i, k, m, j - 1, l - 1, n - 1)
+      .betweenClosedStream(i, k, m, j - 1, l - 1, n - 1)
       .anyMatch(blockPos -> {
         // world.getBlockState(blockPos).contains(new Property<T>() {});
-        return world.getBlockState(blockPos).contains(Properties.LEVEL_8);
+        return world.getBlockState(blockPos).hasProperty(BlockStateProperties.LEVEL_COMPOSTER);
         // return materialPredicate.test(world.getBlockState(blockPos));
       });
   }

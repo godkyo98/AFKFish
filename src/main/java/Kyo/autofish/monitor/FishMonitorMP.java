@@ -1,16 +1,16 @@
 package Kyo.autofish.monitor;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.projectile.FishingBobberEntity;
-import net.minecraft.network.packet.Packet;
 import Kyo.autofish.Autofish;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.world.entity.projectile.FishingHook;
 
 public interface FishMonitorMP {
 
-    void hookTick(Autofish autofish, MinecraftClient minecraft, FishingBobberEntity hook);
+    void hookTick(Autofish autofish, Minecraft minecraft, FishingHook hook);
 
     void handleHookRemoved();
 
-    void handlePacket(Autofish autofish, Packet<?> packet, MinecraftClient minecraft);
+    void handlePacket(Autofish autofish, Packet<?> packet, Minecraft minecraft);
 
 }
