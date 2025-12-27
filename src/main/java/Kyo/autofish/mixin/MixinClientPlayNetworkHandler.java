@@ -21,15 +21,15 @@ public abstract class MixinClientPlayNetworkHandler extends ClientCommonPacketLi
     protected MixinClientPlayNetworkHandler(Minecraft client, Connection connection, CommonListenerCookie connectionState) {
         super(client, connection, connectionState);
     }
-    @Inject(method = "onPlaySound", at = @At("HEAD"))
+    @Inject(method = "handleSoundEvent", at = @At("HEAD"))
     public void onPlaySound(ClientboundSoundPacket playSoundS2CPacket_1, CallbackInfo ci) {
         if (minecraft.isSameThread()) FabricModAutofish.getInstance().handlePacket(playSoundS2CPacket_1);
     }
-    @Inject(method = "onEntityVelocityUpdate", at = @At("HEAD"))
+    @Inject(method = "handleSetEntityMotion", at = @At("HEAD"))
     public void onVelocityUpdate(ClientboundSetEntityMotionPacket entityVelocityUpdateS2CPacket_1, CallbackInfo ci) {
         if (minecraft.isSameThread()) FabricModAutofish.getInstance().handlePacket(entityVelocityUpdateS2CPacket_1);
     }
-    @Inject(method = "onGameMessage", at = @At("HEAD"))
+    @Inject(method = "handleSystemChat", at = @At("HEAD"))
     public void onChatMessage(ClientboundSystemChatPacket chatMessageS2CPacket_1, CallbackInfo ci) {
         if (minecraft.isSameThread()) FabricModAutofish.getInstance().handleChat(chatMessageS2CPacket_1);
     }
