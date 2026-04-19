@@ -1,5 +1,8 @@
 {
   "key.autofish.open_gui": "打开Autofish界面",
+  "modmenu.nameTranslation.autofish": "自动钓鱼",
+  "modmenu.descriptionTranslation.autofish": "当钓到鱼时，自动收线并重新抛竿。",
+
   "options.autofish.title": "Autofish设置",
 
   "options.autofish.toggle.on": "\u00A7a开",

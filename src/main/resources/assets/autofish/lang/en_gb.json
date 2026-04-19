@@ -1,5 +1,8 @@
 {
   "key.autofish.open_gui": "Open Autofish GUI",
+  "modmenu.nameTranslation.autofish": "Autofish",
+  "modmenu.descriptionTranslation.autofish": "It automatically retrieves the line and casts the rod when you catch a fish.",
+
   "options.autofish.title": "Autofish Settings",
 
   "options.autofish.toggle.on": "\u00A7aOn",

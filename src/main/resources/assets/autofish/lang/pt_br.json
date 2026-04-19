@@ -1,5 +1,8 @@
 {
   "key.autofish.open_gui": "Abrir GUI do Autofish",
+  "modmenu.nameTranslation.autofish": "Autofish",
+  "modmenu.descriptionTranslation.autofish": "Recolhe a linha e lança a vara automaticamente quando você pesca um peixe.",
+
   "options.autofish.title": "Configura\u00e7\u00f5es do Autofish",
 
   "options.autofish.toggle.on": "\u00A7aLigado",

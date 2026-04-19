@@ -3,7 +3,7 @@
   "id": "autofish",
   "version": "${version}",
   "name": "AFKfish",
-  "description": "Automatically reels in and recasts your fishing rod when you catch a fish.",
+  "description": "It automatically retrieves the line and casts the rod when you catch a fish.",
   "authors": [
     "Kyo"
   ],
