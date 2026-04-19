@@ -56,10 +56,10 @@ public class FishMonitorMPMotion implements FishMonitorMP {
         if (
         minecraft.player != null &&
         minecraft.player.fishing != null &&
-        minecraft.player.fishing.getId() == velocityPacket.getId()
+        minecraft.player.fishing.getId() == velocityPacket.id()
       ) {
             // TỐI ƯU: Lấy đối tượng velocity một lần và dùng lại
-            Vec3 velocity = velocityPacket.getMovement();
+            Vec3 velocity = velocityPacket.movement();
           // Chờ cho đến khi phao nổi lên trong nước.
           // Ngăn việc đánh dấu lại thời gian phao nổi cho đến khi nó được reset bằng cách câu cá.
         if (

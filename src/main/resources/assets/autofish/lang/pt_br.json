@@ -1,0 +1,57 @@
+{
+  "key.autofish.open_gui": "Abrir GUI do Autofish",
+  "options.autofish.title": "Configura\u00e7\u00f5es do Autofish",
+
+  "options.autofish.toggle.on": "\u00A7aLigado",
+  "options.autofish.toggle.off": "\u00A7eDesligado",
+
+  "options.autofish.enable.title": "Ativar Autofish",
+  "options.autofish.enable.tooltip": "Ativa ou desativa todo o mod.",
+
+  "options.autofish.multirod.title": "Ativar MultiRod",
+  "options.autofish.multirod.tooltip_0": "Alterna entre todas as",
+  "options.autofish.multirod.tooltip_1": "varas dispon\u00edveis na barra r\u00e1pida,",
+  "options.autofish.multirod.tooltip_2": "passando para a pr\u00f3xima quando quebrarem.",
+
+  "options.autofish.break_protection.title": "Ativar Prote\u00e7\u00e3o contra Quebra",
+  "options.autofish.break_protection.tooltip_0": "Para de usar varas com baixa",
+  "options.autofish.break_protection.tooltip_1": "durabilidade antes que quebrem.",
+
+  "options.autofish.persistent.title": "Ativar Modo Persistente",
+  "options.autofish.persistent.tooltip_0": "Ative isto para sempre manter o anzol",
+  "options.autofish.persistent.tooltip_1": "lan\u00e7ado quando estiver com uma vara na m\u00e3o.",
+  "options.autofish.persistent.tooltip_2": "Verifica a cada 10 segundos e relan\u00e7a",
+  "options.autofish.persistent.tooltip_3": "se necess\u00e1rio.",
+  "options.autofish.persistent.tooltip_4": "Isto \u00e9 \u00fatil para problemas de lag ou",
+  "options.autofish.persistent.tooltip_5": "para longos per\u00edodos de pescaria.",
+
+  "options.autofish.sound.title": "Usar Detec\u00e7\u00e3o por Som",
+  "options.autofish.sound.tooltip_0": "\u00A76Detec\u00e7\u00e3o mais nova e precisa baseada",
+  "options.autofish.sound.tooltip_1": "\u00A76nos sons da boia em vez da",
+  "options.autofish.sound.tooltip_2": "\u00A76detec\u00e7\u00e3o padr\u00e3o de movimento do anzol.",
+  "options.autofish.sound.tooltip_3": "- Voc\u00ea precisa estar relativamente perto",
+  "options.autofish.sound.tooltip_4": "  do anzol para isto funcionar.",
+  "options.autofish.sound.tooltip_5": "- Se anz\u00f3is de outros jogadores estiverem",
+  "options.autofish.sound.tooltip_6": "  perto do seu, pode haver falsas capturas.",
+  "options.autofish.sound.tooltip_7": "\u00A7cNota: esta op\u00e7\u00e3o afeta apenas",
+  "options.autofish.sound.tooltip_8": "\u00A7co multijogador. O jogo solo usa sua",
+  "options.autofish.sound.tooltip_9": "\u00A7cpr\u00f3pria detec\u00e7\u00e3o.",
+
+  "options.autofish.multiplayer_compat.title": "For\u00e7ar Detec\u00e7\u00e3o de Multijogador (Compatibilidade com Mods)",
+  "options.autofish.multiplayer_compat.tooltip_0": "For\u00e7a o uso da detec\u00e7\u00e3o de",
+  "options.autofish.multiplayer_compat.tooltip_1": "multijogador enquanto estiver no jogo solo.",
+  "options.autofish.multiplayer_compat.tooltip_2": "Isto fornece compatibilidade com mods de terceiros.",
+
+  "options.autofish.recast_delay.title": "Atraso para Relan\u00e7ar (ms)",
+  "options.autofish.recast_delay.value": "%d ms",
+  "options.autofish.recast_delay.tooltip_0": "Ajusta o atraso entre pegar",
+  "options.autofish.recast_delay.tooltip_1": "um peixe e relan\u00e7ar a vara.",
+
+  "options.autofish.clear_regex.title": "Padr\u00e3o de Chat do ClearLag",
+  "options.autofish.clear_regex.tooltip_0": "Relan\u00e7a a vara de pescar quando",
+  "options.autofish.clear_regex.tooltip_1": "este padr\u00e3o for encontrado no chat.",
+  "options.autofish.clear_regex.tooltip_2": "\u00A76Este padr\u00e3o \u00e9 uma \u00A7aExpress\u00e3o Regular\u00A76.",
+
+  "options.autofish.basic.title": "Op\u00e7\u00f5es B\u00e1sicas",
+  "options.autofish.advanced.title": "Op\u00e7\u00f5es Avan\u00e7adas"
+}

@@ -2,7 +2,7 @@ package Kyo.autofish;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.protocol.Packet;
@@ -31,7 +31,7 @@ public class FabricModAutofish implements ClientModInitializer {
         //Create ConfigManager
         this.configManager = new ConfigManager(this);
         //Register Keybinding
-        autofishGuiKey = KeyBindingHelper.registerKeyBinding(new KeyMapping("key.autofish.open_gui", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_V, KeyMapping.Category.MISC));
+        autofishGuiKey = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.autofish.open_gui", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_V, KeyMapping.Category.MISC));
         //Register Tick Callback
         ClientTickEvents.END_CLIENT_TICK.register(this::tick);
         //Create Scheduler instance
