@@ -22,6 +22,8 @@ import net.minecraft.world.item.FishingRodItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.component.SwingAnimation;
 
 public class Autofish {
 
@@ -197,9 +199,9 @@ public class Autofish {
             InteractionResult actionResult = Objects.requireNonNull(client.gameMode).useItem(client.player, hand);
             if (actionResult.consumesAction()) {
                 if (actionResult.consumesAction()) {
-                    client.player.swing(hand);
+                    // Sửa dòng 201 thành:
+                    client.player.swing(hand, SwingAnimation.DEFAULT, false);
                 }
-                client.gameRenderer.itemInHandRenderer.itemUsed(hand);
             }
         }
     }
